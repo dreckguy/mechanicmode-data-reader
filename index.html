@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Data Reader</title>
+          <script src="js/socket.io.js"></script>
+    </head>
+<body>
+    <h1>Data Reader</h1>
+    <p>Bellow should be presented data from Griiip Backend:</p><hr/>
+
+<p id="data">Loading...</p>
+</body>
+<script>
+        const socket = io.connect('http://backend.dashboard.griiip.com:8081');
+        socket.emit('action', {type:'SERVER/REGISTER',carNumber:11});
+        socket.on('action',function(event){
+            let data = JSON.stringify(event.data);
+            document.getElementById("data").innerHTML = data
+
+        })
+      </script>
+</html> 
