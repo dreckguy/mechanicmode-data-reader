@@ -14,9 +14,10 @@
         const socket = io.connect('http://backend.dashboard.griiip.com:8081');
         socket.emit('action', {type:'SERVER/REGISTER',carNumber:11});
         socket.on('action',function(event){
+            if(event.type ==='FETCH_DATA'){
             let data = JSON.stringify(event.data);
             document.getElementById("data").innerHTML = data
-
+            }
         })
       </script>
 </html> 
